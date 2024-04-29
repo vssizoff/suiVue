@@ -7,7 +7,7 @@ import SuiFileInput from "@/ui/suiFileInput.vue";
 import SuiColorInput from "@/ui/suiColorInput.vue";
 import SuiModalWindow from "@/ui/suiModalWindow.vue";
 import SuiVerticalNav from "@/ui/suiVerticalNav.vue";
-import ThemeEditor from "@/components/themeEditor.vue";
+import ThemeEditor from "@/components/header.vue";
 
 export default {
   name: "MainView",
@@ -20,17 +20,14 @@ export default {
       files: [],
       open: false,
       navData: [
-        {text: "test"},
+        {text: "test", onClick: console.warn},
         {text: "test2", icon: icon},
         {text: "test3", ionIcon: "attach"},
-        {icon: icon}
+        {icon: icon, onClick: console.warn}
       ],
       checkbox: false,
       radio: "test"
     }
-  },
-  mounted() {
-    console.log(this.$themes);
   }
 }
 </script>
@@ -42,7 +39,7 @@ export default {
   <SuiCheckbox v-model="checkbox" class="elem">test</SuiCheckbox>
   <SuiRadio value="test" v-model="radio" class="elem">test</SuiRadio>
   <SuiRadio value="test0" v-model="radio" class="elem">test0</SuiRadio>
-  <SuiVerticalNav :data="navData" class="elem"/>
+  <SuiVerticalNav :data="navData" class="elem" @onClick="console.log"/>
   <SuiModalWindow v-model:open="open">
     <SuiColorInput v-model="color"/>
     <SuiFileInput v-model="files" multiple>Select files</SuiFileInput>
@@ -51,7 +48,7 @@ export default {
 
 <style scoped>
 .elem {
-  margin: 10px;
+  margin: 80px;
 }
 </style>
 

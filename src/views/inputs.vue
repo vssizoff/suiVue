@@ -1,6 +1,6 @@
 <script>
 import SuiInput from "@/ui/suiInput.vue";
-import ThemeEditor from "@/components/themeEditor.vue";
+import ThemeEditor from "@/components/header.vue";
 
 export default {
   name: "InputsView",
@@ -24,5 +24,8 @@ export default {
 </template>
 
 <style scoped>
-
+.elem {
+  display: block;
+  margin-top: 40px;
+}
 </style>

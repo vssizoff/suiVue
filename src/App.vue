@@ -1,6 +1,6 @@
 <script setup>
 import {RouterView} from 'vue-router'
-import ThemeEditor from "@/components/themeEditor.vue";
+import ThemeEditor from "@/components/header.vue";
 </script>
 
 <template>

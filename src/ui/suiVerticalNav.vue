@@ -18,15 +18,16 @@ export default {
     bgColor() {
       return this.bg ?? this.$theme?.verticalNavBg ?? this.$theme?.bg ?? "#ededed";
     }
-  }
+  },
+  emits: ["onClick"]
 }
 </script>
 
 <template>
 <nav>
   <ul>
-    <li v-for="{text, icon, ionIcon, alt} in data">
-      <SuiButton transform="120%">
+    <li v-for="({text, icon, ionIcon, alt, onClick}, index) in data">
+      <SuiButton transform="120%" @click="(onClick ?? (event => $emit('onClick', event, index)))($event)">
         <img v-if="icon" :src="icon" :alt="alt ?? text">
         <IonIcon v-if="ionIcon" :name="ionIcon" :alt="alt ?? text"/>
         <span v-if="text">{{text}}</span>

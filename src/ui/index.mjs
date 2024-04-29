@@ -59,6 +59,9 @@ export const SuiVue = {
             }]))
         };
         const themeName = ref(localStorage.getItem("$theme") ?? options?.default ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"));
+        setInterval(() => {
+            themeName.value = localStorage.getItem("$theme") ?? options?.default ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light");
+        }, 500);
         watch(themeName, name => localStorage.setItem("$theme", name));
         const theme = computed(() => themes[themeName.value]);
         document.body.style.background = theme.value.bodyBg;
