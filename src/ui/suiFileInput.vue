@@ -93,7 +93,7 @@ label .button {
   transition-duration: 0.4s;
   overflow: hidden;
   border: transparent solid 2px;
-  background-color: v-bind(bgColor);
+  background: v-bind(bgColor);
   align-items: center;
   color: v-bind(colorColor);
 

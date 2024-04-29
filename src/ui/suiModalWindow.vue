@@ -60,7 +60,7 @@ div {
   right: 0;
   display: flex;
   justify-content: center;
-  background-color: #000000da;
+  background: #000000da;
   align-items: center;
   transition: opacity .4s ease-in-out;
   opacity: 0;
@@ -72,7 +72,7 @@ div {
 
 dialog {
   text-align: center;
-  background-color: v-bind(bgColor);
+  background: v-bind(bgColor);
   padding: 20px;
   border-radius: 20px;
   border: none;

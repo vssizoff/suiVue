@@ -41,7 +41,7 @@ nav {
   border-radius: 15px;
   transition-duration: 0.4s;
   border: transparent solid 2px;
-  background-color: v-bind(bgColor);
+  background: v-bind(bgColor);
   display: inline-flex;
 
   ul {

@@ -1,23 +1,5 @@
 import {computed, ref, watch} from "vue";
 
-// import SuiButton0 from './SuiButton.vue';
-// import SuiCheckbox0 from './SuiCheckbox.vue';
-// import SuiColorInput0 from './SuiColorInput.vue';
-// import SuiFileInput0 from './SuiFileInput.vue';
-// import SuiInput0 from './SuiInput.vue';
-// import SuiModalWindow0 from './SuiModalWindow.vue';
-// import SuiRadio0 from './SuiRadio.vue';
-// import SuiVerticalNav0 from './SuiVerticalNav.vue';
-//
-// export const SuiButton = SuiButton0;
-// export const SuiCheckbox = SuiCheckbox0;
-// export const SuiColorInput = SuiColorInput0;
-// export const SuiFileInput = SuiFileInput0;
-// export const SuiInput = SuiInput0;
-// export const SuiModalWindow = SuiModalWindow0;
-// export const SuiRadio = SuiRadio0;
-// export const SuiVerticalNav = SuiVerticalNav0;
-
 export const SuiLight = {
     bg: "#ededed",
     border: "green",
@@ -34,7 +16,8 @@ export const SuiLight = {
     inputBorder: "green",
     modalWindowBg: "white",
     verticalNavBg: "#ededed",
-    bodyBg: "white"
+    bodyBg: "white",
+    bodyTransition: "all .4 ease"
 };
 
 export const SuiDark = {
@@ -52,7 +35,8 @@ export const SuiDark = {
     inputBorder: "green",
     modalWindowBg: "#1e1e1e",
     verticalNavBg: "#2c2c2c",
-    bodyBg: "black"
+    bodyBg: "black",
+    bodyTransition: "all .4 ease"
 };
 
 export const SuiVue = {
@@ -74,9 +58,13 @@ export const SuiVue = {
                 ...theme
             }]))
         };
-        const themeName = ref(options?.default ?? "light");
+        const themeName = ref(localStorage.getItem("$theme") ?? options?.default ?? "light");
+        watch(themeName, name => localStorage.setItem("$theme", name));
         const theme = computed(() => themes[themeName.value]);
+        document.body.style.background = theme.value.bodyBg;
+        document.body.style.transition = theme.value.bodyTransition;
         watch(theme, ({bodyBg}) => {
+            document.body.style.transition = theme.value.bodyTransition;
             document.body.style.background = bodyBg;
         });
         app.config.globalProperties = {

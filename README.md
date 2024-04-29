@@ -2,5 +2,5 @@
 
 ## Button
 ```vue
-<SuiButton @click="/* event handling... */" class="elem">test</SuiButton>
+<SuiButton @click="/* event handling... */">test</SuiButton>
 ```

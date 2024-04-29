@@ -43,7 +43,7 @@ button {
   transition-duration: 0.4s;
   overflow: hidden;
   border: transparent solid 2px;
-  background-color: v-bind(bgColor);
+  background: v-bind(bgColor);
   color: v-bind(colorColor);
 
   &:focus-visible {

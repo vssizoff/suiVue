@@ -40,7 +40,7 @@ input {
   appearance: none;
   padding: 0;
   transition: all 0.4s ease;
-  background-color: v-bind(bgColor);
+  background: v-bind(bgColor);
   display: inline-flex;
 
   &::-webkit-color-swatch {

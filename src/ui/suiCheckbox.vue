@@ -47,7 +47,7 @@ button {
   transition: all 0.4s;
   overflow: hidden;
   border: transparent solid 2px;
-  background-color: v-bind(bgColor);
+  background: v-bind(bgColor);
   outline: v-bind(borderColor) solid 0;
   outline-offset: 0;
   color: v-bind(colorColor);
