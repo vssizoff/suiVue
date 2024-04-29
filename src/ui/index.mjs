@@ -35,7 +35,7 @@ export const SuiDark = {
     inputBorder: "green",
     modalWindowBg: "#1e1e1e",
     verticalNavBg: "#2c2c2c",
-    bodyBg: "black",
+    bodyBg: "#121212",
     bodyTransition: "all .4 ease"
 };
 
@@ -58,7 +58,7 @@ export const SuiVue = {
                 ...theme
             }]))
         };
-        const themeName = ref(localStorage.getItem("$theme") ?? options?.default ?? "light");
+        const themeName = ref(localStorage.getItem("$theme") ?? options?.default ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"));
         watch(themeName, name => localStorage.setItem("$theme", name));
         const theme = computed(() => themes[themeName.value]);
         document.body.style.background = theme.value.bodyBg;
