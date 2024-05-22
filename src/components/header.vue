@@ -3,7 +3,7 @@ import SuiRadio from "@/ui/suiRadio.vue";
 import SuiButton from "@/ui/suiButton.vue";
 
 export default {
-  name: "Header",
+  name: "Header0",
   components: {SuiButton, SuiRadio}
 }
 </script>

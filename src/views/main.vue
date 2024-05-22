@@ -8,10 +8,12 @@ import SuiColorInput from "@/ui/suiColorInput.vue";
 import SuiModalWindow from "@/ui/suiModalWindow.vue";
 import SuiVerticalNav from "@/ui/suiVerticalNav.vue";
 import ThemeEditor from "@/components/header.vue";
+import SuiSlider from "@/ui/suiSlider.vue";
 
 export default {
   name: "MainView",
   components: {
+    SuiSlider,
     ThemeEditor,
     SuiRadio, SuiCheckbox, SuiVerticalNav, SuiModalWindow, SuiFileInput, SuiColorInput, SuiButton},
   data() {
@@ -26,7 +28,8 @@ export default {
         {icon: icon, onClick: console.warn}
       ],
       checkbox: false,
-      radio: "test"
+      radio: "test",
+      num: 10
     }
   }
 }
@@ -34,12 +37,16 @@ export default {
 
 <template>
   <SuiButton @click="open = !open" class="elem">test</SuiButton>
+  <SuiButton class="elem">test</SuiButton>
+  <SuiButton @click="open = !open" class="elem" disabled>disabled</SuiButton>
+  <SuiSlider v-model="num"/>
   <SuiColorInput v-model="color" class="elem"/>
   <SuiFileInput v-model="files" multiple class="elem">Select files</SuiFileInput>
   <SuiCheckbox v-model="checkbox" class="elem">test</SuiCheckbox>
   <SuiRadio value="test" v-model="radio" class="elem">test</SuiRadio>
   <SuiRadio value="test0" v-model="radio" class="elem">test0</SuiRadio>
   <SuiVerticalNav :data="navData" class="elem" @onClick="console.log"/>
+  <a class="elem" v-suiButton>test</a>
   <SuiModalWindow v-model:open="open">
     <SuiColorInput v-model="color"/>
     <SuiFileInput v-model="files" multiple>Select files</SuiFileInput>
@@ -48,7 +55,7 @@ export default {
 
 <style scoped>
 .elem {
-  margin: 80px;
+  margin: 20px;
 }
 </style>
 

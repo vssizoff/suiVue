@@ -1,4 +1,5 @@
 import {computed, ref, watch} from "vue";
+import vSuiButton from "@/ui/vSuiButton.js";
 
 export const SuiLight = {
     bg: "#ededed",
@@ -17,7 +18,8 @@ export const SuiLight = {
     modalWindowBg: "white",
     verticalNavBg: "#ededed",
     bodyBg: "white",
-    bodyTransition: "all .4 ease"
+    bodyTransition: "all .4 ease",
+    buttonDisabledBg: "#a5a5a5"
 };
 
 export const SuiDark = {
@@ -36,7 +38,8 @@ export const SuiDark = {
     modalWindowBg: "#1e1e1e",
     verticalNavBg: "#2c2c2c",
     bodyBg: "#121212",
-    bodyTransition: "all .4 ease"
+    bodyTransition: "all .4 ease",
+    buttonDisabledBg: "#1b1b1b"
 };
 
 export const SuiVue = {
@@ -86,5 +89,10 @@ export const SuiVue = {
                 themeName.value = theme;
             }
         };
+        app.directive("suiButton", {
+            mounted(element, {value}) {
+                vSuiButton(element, value, theme);
+            }
+        })
     }
 }

@@ -1,0 +1,28 @@
+.vSuiButton {
+    outline: none;
+    padding: 10px 20px 10px 20px;
+    border-radius: 15px;
+    font-size: 24px;
+    transition-duration: 0.4s;
+    overflow: hidden;
+    border: transparent solid 2px;
+    text-decoration: none;
+    display: inline-flex;
+
+    &:focus-visible {
+        border-radius: 32px;
+        /*transform: scale(${transform});*/
+        border: v-bind(borderColor) solid 2px;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            border-radius: 32px;
+        }
+    }
+
+    &:active {
+        border-radius: 32px;
+        /*transform: scale(${additionalTransform.value});*/
+    }
+}

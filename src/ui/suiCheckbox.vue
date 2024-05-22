@@ -30,6 +30,9 @@ export default {
     },
     colorColor() {
       return this.color ?? this.$theme?.checkboxColor ?? this.$theme?.color ?? "black";
+    },
+    additionalTransform() {
+      return this.transform.endsWith('%') ? `${Number(this.transform.substring(0, this.transform.length - 2)) + 20}%` : String(Number(this.transform) + 0.2);
     }
   }
 }
@@ -66,12 +69,9 @@ button {
     }
   }
 
-  @media (hover: none) {
-    &:active {
-      border-radius: 32px;
-      transform: scale(v-bind(transform));
-      border: v-bind(borderColor) solid 2px;
-    }
+  &:active {
+    border-radius: 32px;
+    transform: scale(v-bind(additionalTransform));
   }
 
   &.checked {
