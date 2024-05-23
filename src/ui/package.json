@@ -1,0 +1,17 @@
+{
+  "name": "sffui.vue",
+  "version": "0.0.0",
+  "description": "UI framework",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vssizoff/suiVue.git"
+  },
+  "author": "sizoff",
+  "license": "none",
+  "bugs": {
+    "url": "https://github.com/vssizoff/suiVue/issues"
+  },
+  "homepage": "https://github.com/vssizoff/suiVue#readme",
+  "type": "module"
+}
