@@ -1,5 +1,7 @@
 <script>
-export default {
+import {defineComponent} from "vue";
+
+export default defineComponent({
   name: "IonIcon",
   props: {
     name: {
@@ -8,7 +10,7 @@ export default {
     },
     alt: String
   }
-}
+})
 </script>
 
 <template>

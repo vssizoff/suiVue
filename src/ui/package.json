@@ -1,6 +1,6 @@
 {
   "name": "sffui.vue",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "UI framework",
   "main": "index.js",
   "repository": {
@@ -13,5 +13,6 @@
     "url": "https://github.com/vssizoff/suiVue/issues"
   },
   "homepage": "https://github.com/vssizoff/suiVue#readme",
-  "type": "module"
+  "type": "module",
+  "types": "./index.d.ts"
 }

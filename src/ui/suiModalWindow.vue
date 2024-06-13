@@ -1,5 +1,7 @@
 <script>
-export default {
+import {defineComponent} from "vue";
+
+export default defineComponent({
   name: "SuiModalWindow",
   data() {
     return {
@@ -38,7 +40,7 @@ export default {
       return this.bg ?? this.$theme?.modalWindowBg ?? this.$theme?.bg ?? "#ededed"
     }
   }
-}
+})
 </script>
 
 <template>

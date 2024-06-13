@@ -1,5 +1,5 @@
 import {computed, ref, watch} from "vue";
-import vSuiButton from "@/ui/vSuiButton.js";
+import vSuiButton from "./vSuiButton.js";
 
 export const SuiLight = {
     bg: "#ededed",
@@ -42,57 +42,59 @@ export const SuiDark = {
     buttonDisabledBg: "#1b1b1b"
 };
 
-export const SuiVue = {
-    install(app, options) {
-        let {light = {}, dark = {}, ...providedThemes} = options?.themes ?? {}
-        const themes = {
-            light: {
-                ...SuiLight,
-                ...light
-            },
-            dark: {
-                ...SuiDark,
-                ...dark
-            },
-            ...Object.fromEntries(Object.entries(providedThemes).map(([key, theme]) => [key, {
-                bg: "#ededed",
-                border: "green",
-                color: "black",
-                ...theme
-            }]))
-        };
-        const themeName = ref(localStorage.getItem("$theme") ?? options?.default ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"));
-        setInterval(() => {
-            themeName.value = localStorage.getItem("$theme") ?? options?.default ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light");
-        }, 500);
-        watch(themeName, name => localStorage.setItem("$theme", name));
-        const theme = computed(() => themes[themeName.value]);
-        document.body.style.background = theme.value.bodyBg;
-        document.body.style.transition = theme.value.bodyTransition;
-        watch(theme, ({bodyBg}) => {
+export function createVueSui(Themes, options) {
+    return {
+        install(app) {
+            let {light = {}, dark = {}, ...providedThemes} = Themes ?? {}
+            const themes = {
+                light: {
+                    ...SuiLight,
+                    ...light
+                },
+                dark: {
+                    ...SuiDark,
+                    ...dark
+                },
+                ...Object.fromEntries(Object.entries(providedThemes).map(([key, theme]) => [key, {
+                    bg: "#ededed",
+                    border: "green",
+                    color: "black",
+                    ...theme
+                }]))
+            };
+            const themeName = ref(localStorage.getItem("$theme") ?? options?.default ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"));
+            setInterval(() => {
+                themeName.value = localStorage.getItem("$theme") ?? options?.default ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light");
+            }, 500);
+            watch(themeName, name => localStorage.setItem("$theme", name));
+            const theme = computed(() => themes[themeName.value]);
+            document.body.style.background = theme.value.bodyBg;
             document.body.style.transition = theme.value.bodyTransition;
-            document.body.style.background = bodyBg;
-        });
-        app.config.globalProperties = {
-            ...app.config.globalProperties,
-            $themes: themes,
-            get $themeName() {
-                return themeName.value;
-            },
-            set $themeName(value) {
-                themeName.value = value;
-            },
-            get $theme() {
-                return {...theme.value, set(name) {themeName.value = name}};
-            },
-            $setTheme(theme) {
-                themeName.value = theme;
-            }
-        };
-        app.directive("suiButton", {
-            mounted(element, {value}) {
-                vSuiButton(element, value, theme);
-            }
-        })
+            watch(theme, ({bodyBg}) => {
+                document.body.style.transition = theme.value.bodyTransition;
+                document.body.style.background = bodyBg;
+            });
+            app.config.globalProperties = {
+                ...app.config.globalProperties,
+                $themes: themes,
+                get $themeName() {
+                    return themeName.value;
+                },
+                set $themeName(value) {
+                    themeName.value = value;
+                },
+                get $theme() {
+                    return {...theme.value, set(name) {themeName.value = name}};
+                },
+                $setTheme(theme) {
+                    themeName.value = theme;
+                }
+            };
+            app.directive("suiButton", {
+                mounted(element, {value}) {
+                    vSuiButton(element, value, theme);
+                }
+            })
+        }
     }
 }

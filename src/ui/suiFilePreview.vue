@@ -1,8 +1,9 @@
 <script>
 import IonIcon from "./ionIcon.vue";
 import cancelIcon from "./assets/cancel.svg";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "SuiFilePreview",
   components: {IonIcon},
   props: {
@@ -42,7 +43,7 @@ export default {
       if (this.file.type.startsWith('image')) this.updateFileUrl();
     }
   }
-}
+})
 </script>
 
 <template>

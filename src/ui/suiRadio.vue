@@ -1,7 +1,8 @@
 <script>
 import SuiCheckbox from "./suiCheckbox.vue";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "SuiRadio",
   components: {SuiCheckbox},
   props: {
@@ -32,7 +33,7 @@ export default {
       set(value) {if (value) this.$emit("update:modelValue", this.value)}
     }
   }
-}
+})
 </script>
 
 <template>

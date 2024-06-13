@@ -1,5 +1,7 @@
 <script>
-export default {
+import {defineComponent} from "vue";
+
+export default defineComponent({
   name: "SuiInput",
   props: {
     colour: {
@@ -105,7 +107,7 @@ export default {
     }
   },
   emits: ["update:model-value"]
-}
+})
 </script>
 
 <template>

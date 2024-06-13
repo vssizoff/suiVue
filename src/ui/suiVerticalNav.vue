@@ -1,8 +1,9 @@
 <script>
 import IonIcon from "@/ui/ionIcon.vue";
 import SuiButton from "@/ui/suiButton.vue";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "SuiVerticalNav",
   components: {SuiButton, IonIcon},
   props: {
@@ -20,7 +21,7 @@ export default {
     }
   },
   emits: ["onClick"]
-}
+})
 </script>
 
 <template>

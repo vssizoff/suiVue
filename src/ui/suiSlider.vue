@@ -1,5 +1,7 @@
 <script>
-export default {
+import {defineComponent} from "vue";
+
+export default defineComponent({
   name: "SuiSlider",
   props: {
     modelValue: {
@@ -35,7 +37,7 @@ export default {
       return `linear-gradient(to right, ${this.progressColor} 0%, ${this.progressColor} ${this.progress}%, ${this.remainedColor} ${this.progress}%, ${this.remainedColor} 100%)`;
     }
   }
-}
+})
 </script>
 
 <template>

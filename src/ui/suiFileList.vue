@@ -1,7 +1,8 @@
 <script>
 import SuiFilePreview from "./suiFilePreview.vue";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "SuiFileList",
   components: {SuiFilePreview},
   props: {
@@ -20,7 +21,7 @@ export default {
       return `${this.files.length * 80 + 20}px`;
     }
   }
-}
+})
 </script>
 
 <template>

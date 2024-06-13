@@ -1,7 +1,8 @@
 <script>
 import SuiFileList from "./suiFileList.vue";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "SuiFileInput",
   components: {SuiFileList},
   props: {
@@ -56,7 +57,7 @@ export default {
       this.dragOver = false;
     }
   }
-}
+})
 </script>
 
 <template>

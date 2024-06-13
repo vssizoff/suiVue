@@ -1,5 +1,7 @@
 <script>
-export default {
+import {defineComponent} from "vue";
+
+export default defineComponent({
   name: "SuiCheckbox",
   props: {
     modelValue: {
@@ -35,7 +37,7 @@ export default {
       return this.transform.endsWith('%') ? `${Number(this.transform.substring(0, this.transform.length - 2)) + 20}%` : String(Number(this.transform) + 0.2);
     }
   }
-}
+})
 </script>
 
 <template>
