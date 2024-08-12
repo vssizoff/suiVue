@@ -23,7 +23,6 @@ export default defineComponent({
   },
   methods: {
     remove(index) {
-      console.log(this.files, index, this.files.filter((_, i) => i !== index));
       this.$emit('update:files', this.files.filter((_, i) => i !== index))
     }
   }
