@@ -30,7 +30,6 @@ export default defineComponent({
       fileReader.onload = url => this.fileUrl = url.target.result;
     },
     remove(event) {
-      console.log(event);
       event.stopPropagation();
       event.stopImmediatePropagation();
       event.preventDefault();

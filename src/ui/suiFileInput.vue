@@ -72,7 +72,7 @@ export default defineComponent({
     <input type="file" @input="addItems($event.target.files)"
            :accept="accept" :multiple="multiple">
     <span class="button" :class="{dragOver: dragOver}">
-      <SuiFileList :files="modelValue" @update:files="([files]) => $emit('update:model-value', files)" class="fileList" :borderRadius="borderRadius" v-if="modelValue.length"/>
+      <SuiFileList :files="modelValue" @update:files="(files) => $emit('update:model-value', files)" class="fileList" :borderRadius="borderRadius" v-if="modelValue.length"/>
       <span><slot/></span>
     </span>
   </label>

@@ -20,13 +20,19 @@ export default defineComponent({
     width() {
       return `${this.files.length * 80 + 20}px`;
     }
+  },
+  methods: {
+    remove(index) {
+      console.log(this.files, index, this.files.filter((_, i) => i !== index));
+      this.$emit('update:files', this.files.filter((_, i) => i !== index))
+    }
   }
 })
 </script>
 
 <template>
   <div>
-    <SuiFilePreview v-for="(file, index) of files" :file="file" :borderRadius="borderRadius" @remove="$emit('update:files', files.filter((_, i) => i !== index))"/>
+    <SuiFilePreview v-for="(file, index) of files" :file="file" :borderRadius="borderRadius" @remove="remove(index)"/>
   </div>
 </template>
 
