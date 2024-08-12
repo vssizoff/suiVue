@@ -20,6 +20,7 @@ export default {
     return {
       color: "#000",
       files: [],
+      file: [],
       open: false,
       navData: [
         {text: "test", onClick: console.warn},
@@ -42,6 +43,7 @@ export default {
   <SuiSlider v-model="num"/>
   <SuiColorInput v-model="color" class="elem"/>
   <SuiFileInput v-model="files" multiple class="elem">Select files</SuiFileInput>
+  <SuiFileInput v-model="file" class="elem">Select file</SuiFileInput>
   <SuiCheckbox v-model="checkbox" class="elem">test</SuiCheckbox>
   <SuiRadio value="test" v-model="radio" class="elem">test</SuiRadio>
   <SuiRadio value="test0" v-model="radio" class="elem">test0</SuiRadio>

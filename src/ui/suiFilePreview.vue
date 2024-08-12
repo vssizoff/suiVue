@@ -32,6 +32,8 @@ export default defineComponent({
     remove(event) {
       console.log(event);
       event.stopPropagation();
+      event.stopImmediatePropagation();
+      event.preventDefault();
       this.$emit('remove');
     }
   },

@@ -51,9 +51,12 @@ export default defineComponent({
     }
   },
   methods: {
+    addItems(files) {
+      this.$emit('update:model-value', this.multiple ? [...this.modelValue, ...Array.from(files)] : Array.from(files));
+    },
     dropHandler(event) {
       event.preventDefault();
-      this.$emit("update:model-value", [...this.modelValue, ...Array.from(event.dataTransfer.files)]);
+      this.addItems(Array.from(event.dataTransfer.files));
       this.dragOver = false;
     }
   }
@@ -66,7 +69,7 @@ export default defineComponent({
          @drop="dropHandler"
          @dragover="$event.preventDefault(); dragOver = true"
          @dragleave="$event.preventDefault(); dragOver = false">
-    <input type="file" @input="$emit('update:model-value', [...modelValue, ...Array.from($event.target.files)])"
+    <input type="file" @input="addItems($event.target.files)"
            :accept="accept" :multiple="multiple">
     <span class="button" :class="{dragOver: dragOver}">
       <SuiFileList :files="modelValue" @update:files="([files]) => $emit('update:model-value', files)" class="fileList" :borderRadius="borderRadius" v-if="modelValue.length"/>
